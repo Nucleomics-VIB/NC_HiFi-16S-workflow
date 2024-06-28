@@ -13,6 +13,17 @@ This file was added to describe the changes operated on the forked version
 
 ## Nextflox Edits
 
+Some extra config definitions were added to the original **nextflow.config** file manually then the resulting edited file was used to create apatch as shown next.
+
+```
+mkdir -p updates
+diff -u nextflow.config nextflow.config.edit > updates/nextflow.config.patch
+cp nextflow.config nextflow.config.ori
+patch nextflow.config < updates/nextflow.config.patch
+```
+
+Additionally, a secondary config file named **config.extra** was created in teh nextflow folder (and copied to **updates**)
+
 ## Input Files
 
 ## bash wrapper
