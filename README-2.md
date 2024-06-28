@@ -18,7 +18,7 @@ Some extra config definitions were added to the original **nextflow.config** fil
 ```
 mkdir -p updates
 diff -u nextflow.config nextflow.config.edit > updates/nextflow.config.patch
-cp nextflow.config nextflow.config.ori
+cp nextflow.config updated/nextflow.config.ori
 patch nextflow.config < updates/nextflow.config.patch
 ```
 
