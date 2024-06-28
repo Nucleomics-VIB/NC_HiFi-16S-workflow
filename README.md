@@ -1,6 +1,6 @@
 # HiFi Full-length 16S analysis with pb-16S-nf
 
-(forked on 2024-06-28 from https://github.com/PacificBiosciences/HiFi-16S-workflow in order to slightly alter code and add custom scripts; See [README-2](READM-2.md) for more details)
+(forked on 2024-06-28 from https://github.com/PacificBiosciences/HiFi-16S-workflow in order to slightly alter code and add custom scripts; See [README-2](README-2.md) for more details)
 
 - Table of Contents
   * [Workflow overview and output](#workflow-overview-and-output)
