@@ -1,0 +1,53 @@
+# decat+demux inputs (fastq and samplenames)
+fastqfiles: "<FASTQ_FOLDER>"
+barcodefile: "<BARCODE_FILE>"
+
+# path to the local copy of the nextflow repo
+# get with 'git clone https://github.com/PacificBiosciences/HiFi-16S-workflow.git'
+# overwrite local files with NC-edited files:
+# - updates/nextflow.config (edited existing file)
+# - updates/extra.config (new file)
+tooldir: "<TOOLDIR>"
+
+# analysis options
+outfolder: ""
+
+# amplicon parameters
+fprimer: "AGRGTTYGATYMTGGCTCAG"
+rprimer: "AAGTCGTAACAAGGTARCY"
+minl: 1000
+maxl: 1600
+readminq: 20
+
+# DADA parameters
+maxee: 2
+minq: 0
+
+# --pooling_method
+poolm: "pseudo"
+
+# ASV filtering
+min_asv_totalfreq: 5
+min_asv_sample: 1
+
+# VSEARCH parameters
+maxrej: 100
+maxacc: 100
+vsid: 0.97
+
+# publish mode
+pmod: "copy"
+
+rarefaction: ""
+
+# downsample large samples to N reads max
+subsample: 20000
+
+colorby: "ncid"
+
+ccpu: 64
+dcpu: 64
+vcpu: 64
+
+# end of config
+# do not remove these last two lines
