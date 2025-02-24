@@ -123,7 +123,7 @@ TMPDIR="${outfolder}/tmp" NXF_WORK="${basefolder}/work" nextflow run main.nf \
   --colorby "${colorby}" \
   -profile singularity \
   -c extra.config \
-  ${myarg} 2>&1 | tee ${outfolder}/run_log.txt
+  ${myarg} 2>&1 | tee -a ${outfolder}/run_log.txt
 
 #################
 # post-processing
