@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# script: run_pb-16s-nf.sh
-# run pacbio nf-16s-nf pipeline
-# SP@NC, 2023/10/17, v1.1
+# script: run_HiFi-16S-workflow_Kinnex_20k.sh
+# run pacbio HiFi-16S-workflow
+# SP@NC, 2025/02/25, v2.0
 # depends on modified nextflow.config file as described in:
 # https://github.com/PacificBiosciences/pb-16S-nf/issues/39
-tooldir="/opt/biotools/pb-16S-nf"
+# replace _ by - in 'Sample Names' to comply with qiime
+
+tooldir="/opt/biotools/HiFi-16S-workflow"
 cd ${tooldir}
 
 # using the command argument '-resume' can be given to the command to resume it
@@ -21,7 +23,7 @@ infolder="${basefolder}/fastq_reads"
 barcode_file="${basefolder}/<...EXP...>_SMRTLink_Barcodefile.csv"
 
 # destination folder for the nextflow outputs
-outfolder="${basefolder}/pb-16S-nf_kinnex-20k"
+outfolder="${basefolder}/HiFi-16S-workflow-20k"
 
 # create outfolder and put sample list and metadata files in it
 mkdir -p "${outfolder}/tmp"
@@ -82,6 +84,8 @@ if [ ! -e "${outfolder}/${outpfx}_samples.tsv" ]; then
 (echo -e "sample-id\tabsolute-file-path"
 for fq in ${infolder}/*.fastq.gz; do
 pfx="$(basename ${fq%.fastq.gz})"
+# replace _ by - to comply with qiime sample-id rules
+pfx="${pfx//_/-}"
 echo -e "${pfx}\t$(readlink -f ${fq})"
 done) > "${outfolder}/../${outpfx}_samples.tsv" && \
 cp "${outfolder}/../${outpfx}_samples.tsv" "${outfolder}/${outpfx}_samples.tsv"
@@ -100,7 +104,8 @@ smplid=$(cat "${barcode_file}" | grep "${bc}" | cut -d "," -f 1 | tr -d '\r')
 label=$(cat "${barcode_file}" | grep "${bc}" | cut -d "," -f 2 | tr -d '\r')
 # get group from the sample_name eg. 337_ES16_LH123Ht_WW_4_2 => ES16
 smplgrp=$(echo ${label} | cut -d "_" -f 2 | tr -d '\r')
-echo -e "${bc}\t${smplid}\t${label}\t${smplgrp}"
+# replace _ by - to comply with qiime sample-id rules
+echo -e "${bc//_/-}\t${smplid}\t${label}\t${smplgrp}"
 done) > "${outfolder}/../${outpfx}_metadata.tsv" && \
 cp  "${outfolder}/../${outpfx}_metadata.tsv"  "${outfolder}/${outpfx}_metadata.tsv"
 fi
