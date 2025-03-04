@@ -1,6 +1,6 @@
 ---
 title:  |
-  | PacBio **pb-16S-nf** pipeline
+  | PacBio **HiFi-16S-workflow**
 author: 
 - "[VIB - Nucleomics Core, nucleomics@vib.be]"
 date: $`r format(Sys.time(), "%a %b %d, %Y")`$ - version 1.0
@@ -30,7 +30,7 @@ library("ggplot2")
 library("RColorBrewer")
 
 # from R730
-wd <- "/opt/biotools/pb-16S-nf"
+wd <- "/opt/biotools/HiFi-16S-workflow"
 
 opts_chunk$set(message=FALSE, 
                warning=FALSE, 
@@ -59,7 +59,7 @@ Analyse demultiplexed data obtained from one or more Sequel-IIe 16S amplicon seq
 
 The analysis was performed using default pipeline parameters except for the Rarefaction which was set to **`r rarefaction`** in order to better compare separate run experiments (this value is generally optimal for a regular run where most of the samples return more than 8000-10000 HiFi reads). Please refer to the separate **barcode_QC_v11.html** document to find out about your sample depth and see which samples were below that arbitrary limit.
 
-**Note:** Some of the default options might not be ideal for every biological question and project. If a new analysis needs be done with other parameters, the user can contact us for a quote or use the pb-16S-nf tool on their own bioinformatics infrastructure ^[https://github.com/PacificBiosciences/HiFi-16S-workflow].
+**Note:** Some of the default options might not be ideal for every biological question and project. If a new analysis needs be done with other parameters, the user can contact us for a quote or use the HiFi-16S-workflow on their own bioinformatics infrastructure ^[https://github.com/PacificBiosciences/HiFi-16S-workflow].
 
 \begin{center}
 
@@ -79,9 +79,9 @@ The analysis was performed using default pipeline parameters except for the Rare
 
 # Analysis settings
 
-The version of the **pb-16S-nf** pipeline used here was **v0.6** ^[https://github.com/PacificBiosciences/HiFi-16S-workflow].
+The version of the **HiFi-16S-workflow** used here was **v0.9** ^[https://github.com/PacificBiosciences/HiFi-16S-workflow].
 
-**Table 1:** list of analysis arguments accepted by the pb-16S-nf pipeline
+**Table 1:** list of analysis arguments accepted by the HiFi-16S-workflow
 
 \footnotesize
 
@@ -134,17 +134,17 @@ A PDF file found on the Zymo site describes the mock sample in details ^[https:/
 
 \footnotesize
 
-```{bash run_pb-16s-nf_template.sh}
+```{bash run_HiFi-16S-workflow_template.sh}
 
 #!/bin/bash
 
-# script: run_pb-16s-nf.sh
-# run pacbio nf-16s-nf pipeline
+# script: run_HiFi-16S-workflow.sh
+# run pacbio HiFi-16S-workflow
 # SP@NC, 2023/10/23, v1.2
 # depends on modified nextflow.config file as described in:
-# https://github.com/PacificBiosciences/pb-16S-nf/issues/39
+# https://github.com/PacificBiosciences/HiFi-16S-workflow/issues/39
 
-tooldir="/opt/biotools/pb-16S-nf"
+tooldir="/opt/biotools/HiFi-16S-workflow"
 cd ${tooldir}
 
 ##################################

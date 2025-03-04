@@ -1,4 +1,4 @@
-# HiFi Full-length 16S analysis with pb-16S-nf
+# HiFi Full-length 16S analysis with HiFi-16S-workflow
 
 - Table of Contents
   - [Workflow overview and output](#workflow-overview-and-output)
@@ -131,7 +131,7 @@ nextflow run main.nf --help
 ```
 
 To test the pipeline, run the example below. Note that the database paths should be changed to their respective locations on your server if they are different. (See the parameters above.) If you
-follow the command above, the databases will be downloaded into a `databases` folder in the `pb-16S-nf` folder
+follow the command above, the databases will be downloaded into a `databases` folder in the `HiFi-16S-workflow` folder
 and you do not need to specify the path. The conda environment will be created by default in the
 `$HOME/nf_conda` folder unless changed in the `nextflow.config` file. Once the conda environment is created, it will be reused by any future run.
 
