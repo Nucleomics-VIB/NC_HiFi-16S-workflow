@@ -54,12 +54,20 @@ rarefaction=''
 #rardepth=10000
 #rarefaction="--rarefaction_depth ${rardepth}"
 
+# DADA2 max_EE parameter. 
+# Reads with number of expected errors higher than
+# this value will be discarded (default: 2)
+max_ee=2
+
 # color by (default "condition")
 # can be set to other categorical variable if present in the metadata file
 colorby="smplgrp"
 
 # use >= 32 cpu for good performance
 cpu=84
+
+# set default database for classification (default GG2)
+db_to_prioritize="GG2"
 
 ######################
 # filtering parameters
@@ -118,6 +126,8 @@ TMPDIR="${outfolder}/tmp" NXF_WORK="${basefolder}/work" nextflow run main.nf \
   --input "${outfolder}/${outpfx}_samples.tsv" \
   --metadata "${outfolder}/${outpfx}_metadata.tsv" \
   --outdir "${outfolder}" \
+  --db_to_prioritize "${db_to_prioritize}" \
+  --max_ee "${max_ee}" \
   --dada2_cpu "${cpu}" \
   --vsearch_cpu "${cpu}" \
   --cutadapt_cpu "${cpu}" \
