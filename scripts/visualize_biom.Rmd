@@ -138,7 +138,7 @@ for (i in 1:length(physeq_list)){
   
   if(type == "vsearch") {
     full_tab <- full_tab %>%
-      gather(key = "Sample", value = "Reads", sample_data(physeq)$sample.id) %>%
+      gather(key = "Sample", value = "Reads", as.character(sample_data(physeq)$sample.id)) %>%
       mutate(Genus = if_else(Genus == "", "Unclassified Genus", Genus),
              Species = if_else(Species!="", Species,
                                if_else(Genus == "Unclassified Genus", 
@@ -147,7 +147,7 @@ for (i in 1:length(physeq_list)){
   } else {
     
     full_tab <- full_tab %>%
-      gather(key = "Sample", value = "Reads", sample_data(physeq)$sample.id) %>% 
+      gather(key = "Sample", value = "Reads", as.character(sample_data(physeq)$sample.id)) %>% 
       mutate(Genus = if_else(grepl("Unclassified", Genus), 
                              "Unclassified Genus", Genus),
              Species = if_else(!grepl("Unclassified", Species), Species,
