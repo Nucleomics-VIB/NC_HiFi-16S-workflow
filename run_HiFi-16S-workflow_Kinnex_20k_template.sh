@@ -66,7 +66,7 @@ colorby="smplgrp"
 # use >= 32 cpu for good performance
 cpu=84
 
-# set default database for classification (default GG2)
+# set default database for classification ([GTDB|SILVA|GG2], default GG2)
 db_to_prioritize="GG2"
 
 ######################
