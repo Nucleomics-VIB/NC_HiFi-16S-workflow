@@ -332,8 +332,7 @@ ggplot(dada2_qc %>%
          inner_join(as_tibble(metadata, rownames = "sample-id"), by="sample-id"),
        aes(x = `non-chimeric`, y = `n_ASV`)) +
   geom_point(aes_string(color = params$colorby)) +
-  labs(x = "Non-chimeric Denoised Reads", y = "Number of ASVs", color = params$colorby) +
-  ggtitle("DADA2 QC Metrics")
+  labs(x = "Non-chimeric Denoised Reads", y = "Number of ASVs", color = params$colorby)
 ```
 
 ## Top Taxa and Plots
